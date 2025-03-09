@@ -31,8 +31,24 @@ ArXiv Preprint ([arXiv:2403.20035](https://arxiv.org/abs/2403.20035))
 
 (2024.03.29) ***The first edition of our paper has been uploaded to arXiv.*** 📃
 
-### Abstract
+### 🎮 Abstract
 Traditionally for improving the segmentation performance of models, most approaches prefer to use adding more complex modules. And this is not suitable for the medical field, especially for mobile medical devices, where computationally loaded models are not suitable for real clinical environments due to computational resource constraints. Recently, state-space models (SSMs), represented by Mamba, have become a strong competitor to traditional CNNs and Transformers. In this paper, we deeply explore the key elements of parameter influence in Mamba and propose an UltraLight Vision Mamba UNet (UltraLight VM-UNet) based on this. Specifically, we propose a method for processing features in parallel Vision Mamba, named PVM Layer, which achieves excellent performance with the lowest computational load while keeping the overall number of processing channels constant. We conducted comparisons and ablation experiments with several state-of-the-art lightweight models on three skin lesion public datasets and demonstrated that the UltraLight VM-UNet exhibits the same strong performance competitiveness with parameters of only 0.049M and GFLOPs of 0.060. In addition, this study deeply explores the key elements of parameter influence in Mamba, which will lay a theoretical foundation for Mamba to possibly become a new mainstream module for lightweighting in the future.
+
+<div align="center">
+    <img width="400" alt="image" src="asserts/challenges.png?raw=true">
+</div>
+
+The challenges: .
+
+
+## 📻 Overview
+
+<div align="center">
+<img width="800" alt="image" src="asserts/network.png?raw=true">
+</div>
+
+Illustration of the overall architecture of Net.
+
 
 ### Different Parallel Vision Mamba （PVM Layer） settings:
 | Setting | Briefly | Params | GFLOPs | DSC |
@@ -107,4 +123,3 @@ python test.py
 
 **4. Additional information.** 
 - PVM Layer can be very simply embedded into any model to reduce the overall parameters of the model. Please refer to [issue 7](https://github.com/wurenkai/UltraLight-VM-UNet/issues/7) for the methodology of calculating model parameters and GFLOPs. In addition to the above operations, the exact GFLOPs calculation still requires the addition of the SSM values due to the specific nature of SSM. Refer to [here](https://github.com/state-spaces/mamba/issues/110#issuecomment-1919470069) for details. However, due to the small number of UltraLight VM-UNet channels, the addition of all the SSM values has almost no effect on the results of the GFLOPs obtained through the operations described above (3 valid digits).
-
